@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mail2idolstage": {
+      "hosting": {
+        "mail2idolstage": [
+          "mail2idolstage"
+        ]
+      }
+    }
+  }
+}

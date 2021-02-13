@@ -124,6 +124,10 @@
               "devServerTarget": "mail2idolstage:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }
