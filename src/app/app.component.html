@@ -1,0 +1,41 @@
+<main>
+  <div class="two-columns">
+    <mat-form-field class="date-picker" appearance="outline">
+      <mat-label>開催日</mat-label>
+      <input
+        color="primary"
+        matInput
+        [min]="minDate"
+        [matDatepicker]="picker"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="section-select" appearance="outline">
+      <mat-label>部</mat-label>
+      <mat-select color="primary">
+        <mat-option *ngFor="let section of [1, 2, 3]" [value]="section">{{
+          section
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label type="text" color="primary">お名前（ニックネーム可）</mat-label>
+    <input matInput placeholder="お名前（ニックネーム可）" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label type="tel" color="primary">お電話番号</mat-label>
+    <input matInput placeholder="お電話番号" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>メールアドレス</mat-label>
+    <input matInput type="email" placeholder="メールアドレス" color="primary" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">メールを送る</button>
+</main>
