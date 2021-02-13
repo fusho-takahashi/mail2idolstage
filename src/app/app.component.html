@@ -1,41 +1,95 @@
+<mat-toolbar color="primary" class="mat-elevation-z2">
+  <mat-toolbar-row>
+    <span>mail2idolstage</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 <main>
-  <div class="two-columns">
-    <mat-form-field class="date-picker" appearance="outline">
-      <mat-label>開催日</mat-label>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="two-columns">
+      <mat-form-field class="date-picker" appearance="fill" color="accent">
+        <mat-label>開催日</mat-label>
+        <input
+          matInput
+          [min]="minDate"
+          [matDatepicker]="picker"
+          [formControlName]="'date'"
+        />
+        <mat-error
+          *ngIf="form.get('date')?.touched && form.get('date')?.errors"
+        >
+          <span *ngIf="form.get('date')?.errors?.required"
+            >開催日を入力してください</span
+          >
+        </mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="section-select" appearance="fill" color="accent">
+        <mat-label>部</mat-label>
+        <mat-select [formControlName]="'section'">
+          <mat-option *ngFor="let section of [1, 2, 3]" [value]="section">{{
+            section
+          }}</mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="form.get('section')?.touched && form.get('section')?.errors"
+        >
+          <span *ngIf="form.get('section')?.errors?.required">部を選択</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill" color="accent">
+      <mat-label type="text">お名前（ニックネーム可）</mat-label>
       <input
-        color="primary"
         matInput
-        [min]="minDate"
-        [matDatepicker]="picker"
+        [formControlName]="'nickname'"
+        placeholder="さふぁり たろう"
       />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker touchUi #picker></mat-datepicker>
+      <mat-error
+        *ngIf="form.get('nickname')?.touched && form.get('nickname')?.errors"
+      >
+        <span *ngIf="form.get('nickname')?.errors?.required"
+          >お名前を入力してください</span
+        >
+      </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="section-select" appearance="outline">
-      <mat-label>部</mat-label>
-      <mat-select color="primary">
-        <mat-option *ngFor="let section of [1, 2, 3]" [value]="section">{{
-          section
-        }}</mat-option>
-      </mat-select>
+    <mat-form-field appearance="fill" color="accent">
+      <mat-label type="tel">お電話番号</mat-label>
+      <input matInput [formControlName]="'tel'" placeholder="09012345678" />
+      <mat-error *ngIf="form.get('tel')?.touched && form.get('tel')?.errors">
+        <span *ngIf="form.get('tel')?.errors?.required"
+          >お電話番号を入力してください</span
+        >
+      </mat-error>
     </mat-form-field>
-  </div>
 
-  <mat-form-field appearance="outline">
-    <mat-label type="text" color="primary">お名前（ニックネーム可）</mat-label>
-    <input matInput placeholder="お名前（ニックネーム可）" />
-  </mat-form-field>
+    <mat-form-field appearance="fill" color="accent">
+      <mat-label>メールアドレス</mat-label>
+      <input
+        matInput
+        type="email"
+        [formControlName]="'email'"
+        placeholder="idolstage@example.com"
+      />
+      <mat-error
+        *ngIf="form.get('email')?.touched && form.get('email')?.errors"
+      >
+        <span *ngIf="form.get('email')?.errors?.required"
+          >メールアドレスを入力してください</span
+        >
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label type="tel" color="primary">お電話番号</mat-label>
-    <input matInput placeholder="お電話番号" />
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>メールアドレス</mat-label>
-    <input matInput type="email" placeholder="メールアドレス" color="primary" />
-  </mat-form-field>
-
-  <button mat-raised-button color="primary">メールを送る</button>
+    <button
+      type="submit"
+      [disabled]="form.invalid"
+      mat-raised-button
+      color="primary"
+    >
+      メールを送る
+    </button>
+  </form>
 </main>

@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -12,21 +11,23 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$mail2idolstage-primary: mat-palette($mat-indigo);
-$mail2idolstage-accent: mat-palette($mat-pink, A200, A100, A400);
+$mail2idolstage-primary: mat-palette($mat-yellow, 600);
+$mail2idolstage-accent: mat-palette($mat-yellow, 700);
 
 // The warn palette is optional (defaults to red).
 $mail2idolstage-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$mail2idolstage-theme: mat-light-theme((
-  color: (
-    primary: $mail2idolstage-primary,
-    accent: $mail2idolstage-accent,
-    warn: $mail2idolstage-warn,
+$mail2idolstage-theme: mat-light-theme(
+  (
+    color: (
+      primary: $mail2idolstage-primary,
+      accent: $mail2idolstage-accent,
+      warn: $mail2idolstage-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -35,5 +36,15 @@ $mail2idolstage-theme: mat-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.mat-typography {
+  font-size: 16px;
+}

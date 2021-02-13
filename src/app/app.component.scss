@@ -1,14 +1,22 @@
 main {
+  display: flex;
+  justify-content: center;
+}
+
+form {
   padding: 16px;
+  width: 100%;
+  max-width: 1024px;
   display: grid;
 }
 
 .two-columns {
   display: grid;
-  grid-template-columns: 1fr 100px;
+  grid-template-columns: 3fr 1fr;
   grid-gap: 8px;
 }
 
-.date-picker {
+.date-picker,
+.section-select {
   min-width: 1px;
 }
